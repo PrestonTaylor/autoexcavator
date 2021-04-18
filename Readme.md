@@ -1,0 +1,1 @@
+Simple and dumb, edit variables for your own use.
