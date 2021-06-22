@@ -1,0 +1,14 @@
+SnowRunner.exe
+CivilizationVI.exe
+CivilizationVI_DX12.exe
+GenerationZero_F.exe
+ItTakesTwo.exe
+Shipbreaker.exe
+Borderlands3.exe
+RocketLeague.exe
+UE4-Win64-Shipping.exe
+Shipping.exe
+portal2.exe
+Titanfall2.exe
+SniperElite4_DX11.exe
+FlightSimulator.exe
