@@ -9,21 +9,20 @@ state = 1
 apiendpoint = 'localhost'
 apiport='18000'
 authtoken = 'asdf'
-authtokenheader =  {'Authorization': authtoken}
 urlprefix = 'http://' + apiendpoint + ':' + apiport + '/api?command='
 
 lasthash = ''
 minerstopparams = '{"id":1,"method":"miner.stop","params":[]}'
 restartparams = '{"id":1,"method":"restart","params":[]}' 
 subscribeinfoparams = '{"id":1,"method":"subscribe.info","params":[]}'
-quitexc = '{"id":1,"method":"quit","params":[]}'
+quitparams = '{"id":1,"method":"quit","params":[]}'
 
 def stop():
-    r = requests.get(url = (urlprefix + minerstopparams), headers = authtokenheader)
+    r = requests.get(url = (urlprefix + minerstopparams), headers = {'Authorization': authtoken})
 def start():
-    r = requests.get(url = (urlprefix + quitexc), headers = authtokenheader)
+    r = requests.get(url = (urlprefix + quitparams), headers = {'Authorization': authtoken})
 def getstate():
-    r = requests.get(url = (urlprefix + subscribeinfoparams), headers = authtokenheader) 
+    r = requests.get(url = (urlprefix + subscribeinfoparams), headers = {'Authorization': authtoken}) 
     if(json.loads(r.text)['connected'] == True):
         return 1
     return 0
