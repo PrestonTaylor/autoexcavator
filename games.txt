@@ -12,3 +12,9 @@ portal2.exe
 Titanfall2.exe
 SniperElite4_DX11.exe
 FlightSimulator.exe
+FarCry5.exe
+FarCryNewDawn.exe
+AWayOut_friend.exe
+FarmingSimulator2019Game.exe
+forzamotorsport7.exe
+EoCApp.exe

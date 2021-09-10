@@ -18,9 +18,9 @@ subscribeinfoparams = '{"id":1,"method":"subscribe.info","params":[]}'
 quitparams = '{"id":1,"method":"quit","params":[]}'
 
 def stop():
-    r = requests.get(url = (urlprefix + minerstopparams), headers = {'Authorization': authtoken})
+    requests.get(url = (urlprefix + minerstopparams), headers = {'Authorization': authtoken})
 def start():
-    r = requests.get(url = (urlprefix + quitparams), headers = {'Authorization': authtoken})
+    requests.get(url = (urlprefix + quitparams), headers = {'Authorization': authtoken})
 def getstate():
     r = requests.get(url = (urlprefix + subscribeinfoparams), headers = {'Authorization': authtoken}) 
     if(json.loads(r.text)['connected'] == True):
@@ -33,20 +33,23 @@ while True:
             restring = ''
             with open("games.txt") as file: 
                 for l in file.readlines():
-                    restring += l.rstrip() + '|'
-            regex = re.compile('('+restring[:-1]+')',re.IGNORECASE)
+                    restring += '"' + l.strip() + '"|'
+            regex = re.compile('(' + restring[:-1] + ')',re.IGNORECASE)
             lasthash = currenthash
         state = getstate()
         processes = os.popen('tasklist /NH /FI "STATUS eq running" /FO CSV').read()
-        if(re.search(regex, processes) is not None):
+        match = re.search(regex, processes)
+        if(match is not None):
             if(state==1):
-                print('stopping')
+                print('stopping for: ' + match.group(1))
                 stop()
         else:
             if(state==0):
                 print('starting')
                 start()
-        time.sleep(30)
+                time.sleep(45)
+                continue
+        time.sleep(15)
     except Exception as e:
         print(e)
         time.sleep(30)
