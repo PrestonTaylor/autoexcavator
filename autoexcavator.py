@@ -30,26 +30,27 @@ while True:
     try:
         currenthash = hashlib.md5(open('games.txt','rb').read()).hexdigest()
         if(not lasthash == currenthash):
-            restring = ''
+            gamelist = []
             with open("games.txt") as file: 
                 for l in file.readlines():
-                    restring += '"' + l.strip() + '"|'
-            regex = re.compile('(' + restring[:-1] + ')',re.IGNORECASE)
+                    gamelist.append(l.strip())
             lasthash = currenthash
         state = getstate()
         processes = os.popen('tasklist /NH /FI "STATUS eq running" /FO CSV').read()
-        match = re.search(regex, processes)
-        if(match is not None):
-            if(state==1):
-                print('stopping for: ' + match.group(1))
-                stop()
+        for game in gamelist:
+            if game in processes:
+                if(state==1):
+                    print('stopping for: ' + game)
+                    stop()
+                break
         else:
             if(state==0):
                 print('starting')
-                start()
-                time.sleep(45)
-                continue
-        time.sleep(15)
+                start()      
+            time.sleep(45)
+            continue
+        time.sleep(30)  
     except Exception as e:
         print(e)
         time.sleep(30)
+ 
