@@ -8,9 +8,8 @@ import hashlib
 state = 1
 apiendpoint = 'localhost'
 apiport='18000'
-urlprefix = 'http://' + apiendpoint + ':' + apiport + '/api?command='
-# authtoken = 'b97409d7-b65e-4c15-90d1-23c4c2113ef4'
-authtoken = '40BB4FCB6A84904778B78A92'
+authtoken = 'asdf'
+urlprefix = f'http://{apiendpoint}:{apiport}/api?command='
 
 lasthash = ''
 minerstopparams = '{"id":1,"method":"miner.stop","params":[]}'
