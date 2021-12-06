@@ -38,9 +38,10 @@ while True:
         state = getstate()
         processes = os.popen('tasklist /NH /FI "STATUS eq running" /FO CSV').read()
         for game in gamelist:
+            game = '"' + game.strip() + '"'
             if game in processes:
                 if(state==1):
-                    print('stopping for: ' + game)
+                    print(f'stopping for: {game}')
                     stop()
                 break
         else:
