@@ -18,3 +18,7 @@ AWayOut_friend.exe
 FarmingSimulator2019Game.exe
 forzamotorsport7.exe
 EoCApp.exe
+Back4Blood.exe
+Cities.exe
+HaloInfinite.exe
+Madness-WinGDK-Shipping.exe
