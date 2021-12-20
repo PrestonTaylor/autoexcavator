@@ -22,3 +22,7 @@ Back4Blood.exe
 Cities.exe
 HaloInfinite.exe
 Madness-WinGDK-Shipping.exe
+Gunfire Reborn.exe
+Fallout4.exe
+Fallout4Launcher.exe
+BF2042.exe
