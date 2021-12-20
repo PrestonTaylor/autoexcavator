@@ -23,9 +23,13 @@ def start():
     requests.get(url = (urlprefix + quitparams), headers = {'Authorization': authtoken})
 def getstate():
     r = requests.get(url = (urlprefix + subscribeinfoparams), headers = {'Authorization': authtoken}) 
-    if(json.loads(r.text)['connected'] == True):
+    if(json.loads(r.text).get('error') == 'Invalid auth token.'):
+        print('Invalid auth token.')
+        exit()
+    if(json.loads(r.text).get('connected') == True):
         return 1
     return 0
+    
 while True:
     try:
         currenthash = hashlib.md5(open('games.txt','rb').read()).hexdigest()
